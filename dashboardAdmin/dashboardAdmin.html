@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="./assets/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/dashboardAdmin.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- start nav dashboard -->
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Spare Parts</a>
+      <p class="navbar-brand">Welcome Admin</p>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Spare Parts</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Dashboard Admin</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./dashboardAdminOders.html">Orders</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Categories and Items</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Users
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Merchant Users</a></li>
+                <li><a class="dropdown-item" href="#">Maintenance Center Users</a></li>
+                <li><a class="dropdown-item" href="#">customers</a></li>
+              </ul>
+            </li>
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- End nav dashboard -->
+
+
+  <!-- start primary tree -->
+
+  <div class="container home-total">
+    <h1 class="text-center m-5">Dashboard Admin</h1>
+
+
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="stat-cursor text-center total total-users">Total Users
+          <span><i class="fa-solid fa-users m-2"></i>45</span>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="stat-cursor text-center total total-pending">Pending Users
+          <span><i class="fa-solid fa-spinner m-2"></i>15</span>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="stat-cursor text-center total total-orders">Total Orders
+          <span><i class="fa-solid fa-cubes m-2"></i>200</span>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="stat-cursor text-center total total-items">Total Items
+          <span><i class="fa-solid fa-tags m-2"></i>4012</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- End primary tree -->
+
+
+
+
+  <!-- start total users tree -->
+
+  <div class="container latest total-users-details">
+    <div class="row">
+
+      <div class="col-lg-4">
+        <div class="stat-cursor total text-center parent-info-users total-users-tag total-Merchant-Users">Total Merchant Users
+          <span><i class="fa-solid fa-users m-2"></i>15</span>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="stat-cursor total text-center parent-info-users total-users-tag total-Maintenance-Center-Users">Total
+          Maintenance Center Users
+          <span><i class="fa-solid fa-users m-2"></i>15</span>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="total text-center parent-info-users total-users-tag total-Normal-Users">Total customers
+          <span><i class="fa-solid fa-users m-2"></i>15</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- End total users tree -->
+
+
+
+  <!-- start last users tree -->
+
+  <div class="container merchant-users total-merchant-users-details-info">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="users-info total">
+          <div class="d-flex justify-content-between">
+            <div class=""><i class="fa-solid fa-check m-2"></i>Accepted Merchant Users</div>
+            <div class="panel-body"><i class="fa-solid fa-users m-2"></i>10</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="users-info-pending total">
+          <div class="d-flex justify-content-between">
+            <div class="panel-heading"><i class="fa-solid fa-spinner m-2"></i>Pending Merchant Users</div>
+            <div class="panel-body"><i class="fa-solid fa-users m-2"></i>5</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container maintenance-center-users total-Maintenance-users-details-info">
+    <div class="row">
+      <div class="col-md-6">
+
+        <div class="users-info total">
+          <div class="d-flex justify-content-between">
+            <div class=""><i class="fa-solid fa-check m-2"></i>Accepted Maintenance Center Users</div>
+            <div class="panel-body"><i class="fa-solid fa-users m-2"></i>10</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+
+        <div class="users-info-pending total">
+          <div class="d-flex justify-content-between">
+            <div class="panel-heading"><i class="fa-solid fa-spinner m-2"></i>Pending Maintenance Center Users</div>
+            <div class="panel-body"><i class="fa-solid fa-users m-2"></i>5</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- <div class="container normal-users total-Normal-users-details-info">
+    <div class="row">
+      <div class="col-md-6">
+
+        <div class="users-info total">
+          <div class="d-flex justify-content-between">
+            <div class=""><i class="fa-solid fa-check m-2"></i>Accepted Normal Users</div>
+            <div class="panel-body"><i class="fa-solid fa-users m-2"></i>10</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+
+        <div class="users-info-pending total">
+          <div class="d-flex justify-content-between">
+            <div class="panel-heading"><i class="fa-solid fa-spinner m-2"></i>Pending Normal Users</div>
+            <div class="panel-body"><i class="fa-solid fa-users m-2"></i>5</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- End last users tree -->
+
+
+
+
+
+
+  <!-- start total pending users tree -->
+
+  <div class="container latest total-users-details-pending">
+    <div class="row">
+
+      <div class="col-lg-6">
+        <div class="total text-center parent-info-users-pending total-users-tag total-Merchant-Users-pending">Pending
+          Merchant Users
+          <span><i class="fa-solid fa-spinner m-2"></i>10</span>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="total text-center parent-info-users-pending total-users-tag total-Maintenance-Center-Users-pending">
+          Pending
+          Maintenance Center Users
+          <span><i class="fa-solid fa-spinner m-2"></i>5</span>
+        </div>
+      </div>
+
+      <!-- <div class="col-lg-4">
+        <div class="total text-center parent-info-users-pending total-users-tag total-Normal-Users-pending">Pending
+          Normal
+          Users
+          <span><i class="fa-solid fa-spinner m-2"></i>5</span>
+        </div>
+      </div> -->
+
+    </div>
+  </div>
+
+  <!-- End total pending users tree -->
+
+
+  <!-- start total orders tree -->
+
+  <div class="container latest total-orders-parent">
+
+    <div class="total d-flex justify-content-between text-center parent-info-orders total-users-tag total-Merchant-Users-pending">Category one <span> orderd 50 times <i class="fa-solid fa-cubes m-2"></i></span>
+    </div>
+    <div class="total d-flex justify-content-between text-center parent-info-orders total-users-tag total-Merchant-Users-pending">Category two <span> orderd 50 times <i class="fa-solid fa-cubes m-2"></i></span>
+    </div>
+    <div class="total d-flex justify-content-between text-center parent-info-orders total-users-tag total-Merchant-Users-pending">Category three <span> orderd 50 times <i class="fa-solid fa-cubes m-2"></i></span>
+    </div>
+
+  </div>
+
+  <!-- start total orders tree -->
+
+
+
+    <!-- start total orders tree -->
+
+    <div class="container latest total-category-parent">
+
+      <div class="total d-flex justify-content-between text-center parent-info-category">Category one <span> has 50 different items <i class="fa-solid fa-tag m-2"></i></span>
+      </div>
+      <div class="total d-flex justify-content-between text-center parent-info-category">Category two <span> has 50 different items <i class="fa-solid fa-tag m-2"></i></span>
+      </div>
+      <div class="total d-flex justify-content-between text-center parent-info-category">Category three <span> has 50 different items <i class="fa-solid fa-tag m-2"></i></span>
+      </div>
+  
+    </div>
+  
+    <!-- start total orders tree -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script src="./assets/js/dashboardAdmin.js"></script>
+</body>
+
+</html>

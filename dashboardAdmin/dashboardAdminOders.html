@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/dashboardAdminOders.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- start nav dashboard -->
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">Spare Parts</a>
+            <p class="navbar-brand">Welcome Admin</p>
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Spare Parts</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./dashboardAdmin.html">Dashboard
+                                Admin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Categories and Items</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Users
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Merchant Users</a></li>
+                                <li><a class="dropdown-item" href="#">Maintenance Center Users</a></li>
+                                <li><a class="dropdown-item" href="#">customers</a></li>
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- End nav dashboard -->
+
+
+    <!-- start primary tree -->
+
+    <div class="container home-total mb-4">
+        <h1 class="text-center m-5">Dashboard Admin Orders</h1>
+        <div class="container mb-4 d-flex justify-content-center">
+            <div class="text-center d-flex justify-content-center total total-orders">
+                <p class="m-3">Total Orders</p>
+                <span class="m-3"><i class="fa-solid fa-users m-3"></i>45</span>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+
+
+                <!-- search -->
+                <div class="col-12 mb-4">
+                    <input type="text" class="form-control" placeholder="Search" id="search">
+                </div>
+                <div class="input-group-append col-12 d-flex justify-content-between mb-4 flex-wrap">
+                    <button class="btn btn-secondary m-3" onclick="searchmood(this.id)" id="merchNameBTn" type="button">
+                        <i class="fa fa-search"></i><strong> Search by Merchant Name </strong>
+                    </button>
+                    <button class="btn btn-secondary m-3" onclick="searchmood(this.id)" id="merchNIDBTn" type="button">
+                        <i class="fa fa-search"></i><strong> Search by National Id </strong>
+                    </button>
+                    <button class="btn btn-secondary m-3" onclick="searchmood(this.id)" id="merchOrderNameBTn"
+                        type="button">
+                        <i class="fa fa-search"></i><strong> Search by Order Name </strong>
+                    </button>
+                    <button class="btn btn-secondary m-3" onclick="searchmood(this.id)" id="merchOrderTypeBTn"
+                        type="button">
+                        <i class="fa fa-search"></i><strong> Search by Order Type </strong>
+                    </button>
+                    <button class="btn btn-secondary m-3" onclick="searchmood(this.id)" id="merchOrderPriceBTn"
+                        type="button">
+                        <i class="fa fa-search"></i><strong> Search by Order Price </strong>
+                    </button>
+                </div>
+
+                <!-- filter -->
+                <div class="btn-group col-12">
+                    <button type="button" class="btn btn-info dropdown-toggle text-white fw-bold "
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Sort By
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-list w-100 text-center">
+                        <li class="dropdown-item dropdown-item-list" id="idLowerToUpper">Price: lower to heighr</li>
+                        <li class="dropdown-item dropdown-item-list" id="idUpperToLower">Price: heighr to lower</li>
+                        <li class="dropdown-item dropdown-item-list" id="idAtOZ">Sort by Merchant Name A To Z</li>
+                        <li class="dropdown-item dropdown-item-list" id="idZtoA">Sort by Merchant Name Z To A</li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- End primary tree -->
+
+
+    <!-- start total users tree -->
+
+    <div class="container latest total-Merchant-users-details">
+        <table class="table table-striped table-hover text-center">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col" id="merchantName">Merchant Name</th>
+                    <th scope="col" id="merchantNID">Merchant National Id</th>
+                    <th scope="col">Merchant Commercial Register</th>
+                    <th scope="col" id="orderName">Order Name</th>
+                    <th scope="col" id="orderType">Order Type</th>
+                    <th scope="col" id="orderPrice">Order Price</th>
+                    <th scope="col">Order Pricture</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr class="userOne order-details">
+                    <th scope="row">1</th>
+                    <td class="merchantName">Mark</td>
+                    <td class="merchantNID">291023002259</td>
+                    <td><img src="./assets/imgs/document0.jpg" alt="" width="100px" height="100px"></td>
+                    <th scope="row" class="orderName">1</th>
+                    <td class="orderType">Ali</td>
+                    <td class="orderPrice">100</td>
+                    <td><img src="./assets/imgs/car spare (1).jpg" alt="" width="100px" height="100px"></td>
+                </tr>
+                <tr class="userTwo order-details">
+                    <th scope="row">2</th>
+                    <td class="merchantName">Ali</td>
+                    <td class="merchantNID">298123002259</td>
+                    <td><img src="./assets/imgs/document0.jpg" alt="" width="100px" height="100px"></td>
+                    <th scope="row" class="orderName">1</th>
+                    <td class="orderType">Ali</td>
+                    <td class="orderPrice">200</td>
+                    <td><img src="./assets/imgs/car spare (2).jpg" alt="" width="100px" height="100px"></td>
+                </tr>
+                <tr class="userThree order-details">
+                    <th scope="row">3</th>
+                    <td class="merchantName">Marwa</td>
+                    <td class="merchantNID">294043002259</td>
+                    <td><img src="./assets/imgs/document0.jpg" alt="" width="100px" height="100px"></td>
+                    <th scope="row" class="orderName">1</th>
+                    <td class="orderType">Ali</td>
+                    <td class="orderPrice">150</td>
+                    <td><img src="./assets/imgs/car spare (3).jpg" alt="" width="100px" height="100px"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- End total users tree -->
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="./assets/js/dashboardAdminOders.js"></script>
+</body>
+
+</html>
