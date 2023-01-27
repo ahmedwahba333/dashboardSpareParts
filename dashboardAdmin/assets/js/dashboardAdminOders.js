@@ -14,6 +14,7 @@ function searchmood(id) {
   }
   searchLabel.focus();
 }
+
 // start searching object
 class mySearch {
   constructor(merchantName, merchantNID, orderName, orderType, orderPrice) {
@@ -37,9 +38,15 @@ class mySearch {
         myElement[i].style.fontWeight = "bold";
       }
     }
+    if(value != ""){
+      document.getElementById("mainTable").classList.remove("table-striped");
+    }else{
+      document.getElementById("mainTable").classList.add("table-striped");
+    }
   }
 }
 // end searching object
+
 let myObj = new mySearch();
 myObj.merchantName = document.getElementsByClassName("merchantName");
 myObj.merchantNID = document.getElementsByClassName("merchantNID");
@@ -65,6 +72,7 @@ document.getElementById("merchOrderTypeBTn").addEventListener("click", () => {
 document.getElementById("merchOrderPriceBTn").addEventListener("click", () => {
   myObj.searchKeyUp(myObj.orderPrice, document.getElementById("search").value);
 });
+
 // start sorting object
 class mySort {
   constructor(priceClass, merchantNameClass) {
@@ -124,8 +132,8 @@ class mySort {
     }
   }
 }
-
 // end sorting object
+
 let sortObj = new mySort();
 sortObj.priceClass = document.getElementsByClassName("orderPrice");
 sortObj.merchantNameClass = document.getElementsByClassName("merchantName");
@@ -143,3 +151,58 @@ document.getElementById("idAtOZ").addEventListener("click", () => {
 document.getElementById("idZtoA").addEventListener("click", () => {
   sortObj.sortNameFun("ZtoA", sortObj.merchantNameClass);
 });
+
+
+
+// dark mode buttun
+// document.getElementById("darkBtn").addEventListener("click",()=>{
+//   if (document.getElementById("myBody").hasAttribute("data-bs-theme")) {
+    
+//     document.getElementById("myBody").removeAttribute("data-bs-theme")
+//   }else{
+//     document.getElementById("myBody").setAttribute("data-bs-theme","dark") 
+//   }
+//   console.log(document.getElementById("myBody").hasAttribute("data-bs-theme"));
+// })
+
+
+
+
+
+
+// jquery logic for label list and unorderd list
+$(document).ready(function(){
+  $("#priceBtnLabelId").click(function(){
+    $("#priceBtnLabelIdToggle").slideToggle();
+  });
+  
+  
+  
+  $("#yearBtnLabelId").click(function(){
+    $("#yearBtnLabelIdToggle").slideToggle();
+  });
+  
+  
+  $("#AtoZBtnId").click(function(){
+    $("#AtoZBtnIdToggle").slideToggle();
+  });
+  
+  $("#ZtoABtnId").click(function(){
+    $("#ZtoABtnIdToggle").slideToggle();
+  });
+  
+  
+  $("#sortBtnToggle").click(function(){
+    $("#sortBtnToggleChild").slideToggle();
+  });
+  
+  $(".itemNodeClass").click(function(){
+    $(".itemNodeClassParent").fadeOut();
+  });
+  
+  
+  
+  
+  
+  });
+  
