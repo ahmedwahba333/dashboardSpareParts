@@ -1,0 +1,15 @@
+@import url("./dashboardAdminOders.css");
+
+.total-users {
+    background-color: rgba(39, 174, 96,1.0);
+}
+.actionBtns button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px;
+    align-items: center;
+}
+.sortUl{
+    padding: 0px;
+}

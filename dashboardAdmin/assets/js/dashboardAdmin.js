@@ -1,3 +1,6 @@
+import { darkFun } from "./searchSort.js";
+window.darkFun = darkFun;
+
 $(document).ready(function () {
   // Users
   $(".total-users").click(function () {

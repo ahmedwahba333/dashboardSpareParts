@@ -10,7 +10,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="./assets/css/all.min.css">
     <link rel="stylesheet" href="assets/css/dashboardAdminOders.css" />
-    <title>Orders</title>
+    <link rel="icon" href="./assets/imgs/icon.jpg">
+    <title>Dashboard Admin Orders</title>
 </head>
 
 <body id="myBody">
@@ -32,14 +33,14 @@
                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Spare Parts</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <div class="offcanvas-body d-flex justify-content-between flex-column">
+                    <ul class="navbar-nav flex-grow-1 pe-3">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="./dashboardAdmin.html">Dashboard
                                 Admin</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Orders</a>
+                            <a class="nav-link" href="./dashboardAdminOders.html">Orders</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./dashboardAdminCategories&items.html">Categories and Items</a>
@@ -51,26 +52,29 @@
                                 Users
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="./dashboardAdminMerchantUsers.html">Merchant Users</a></li>
-                                <li><a class="dropdown-item" href="#">Maintenance Center Users</a></li>
-                                <li><a class="dropdown-item" href="#">customers</a></li>
+                                <li><a class="dropdown-item" href="./dashboardAdminMerchantUsers.html">Merchant
+                                        Users</a></li>
+                                <li><a class="dropdown-item" href="./dashboardMaintenanceCenterUsers.html">Maintenance Center Users</a></li>
+                                <li><a class="dropdown-item" href="./dashboardAdminCustomers.html">customers</a></li>
                             </ul>
                         </li>
 
 
                     </ul>
+                    <div class="darkBtnParent">
+                        <div class="darkBtn">
+                            <h2>Dark Mode</h2>
+                            <label class="switch">
+                                <input type="checkbox" id="darkBtnChecked" onclick="darkFun()">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
     <!-- End nav dashboard -->
-
-    <!-- <label class="toggle" id="darkBtn">
-        <input class="toggle-checkbox" type="checkbox">
-        <div class="toggle-switch"></div>
-        <span class="toggle-label">Dark Mode</span>
-    </label> -->
-    <!-- start primary tree -->
 
     <div class="container home-total mb-4">
 
@@ -92,29 +96,29 @@
                 </div>
                 <div class="input-group-append col-12 d-flex justify-content-center flex-wrap mb-4 ">
                     <div class="col-12 row justify-content-center">
-                        <button class="col-5 btn btn-secondary m-3" onclick="searchmood(this.id)" id="merchNameBTn"
+                        <button class="col-4 btn btn-secondary m-3" onclick="searchmood(this)" id="merchNameBTn"
                             type="button">
-                            <i class="fa fa-search"></i><strong> Search by Merchant Name </strong>
+                            <i class="fa fa-search"></i><strong>Merchant Name</strong>
                         </button>
-                        <button class="col-5 btn btn-secondary m-3" onclick="searchmood(this.id)" id="merchNIDBTn"
+                        <button class="col-4 btn btn-secondary m-3" onclick="searchmood(this)" id="merchNIDBTn"
                             type="button">
-                            <i class="fa fa-search"></i><strong> Search by National Id </strong>
+                            <i class="fa fa-search"></i><strong>National Id</strong>
                         </button>
                     </div>
-                    
-                    <button class="col-5  btn btn-secondary m-3" onclick="searchmood(this.id)" id="merchOrderNameBTn"
+
+                    <button class="col-4 btn btn-secondary m-3" onclick="searchmood(this)" id="merchOrderNameBTn"
                         type="button">
-                        <i class="fa fa-search"></i><strong> Search by Order Name </strong>
+                        <i class="fa fa-search"></i><strong>Order Name</strong>
                     </button>
 
                     <div class="col-12 row justify-content-center">
-                        <button class="col-5 btn btn-secondary m-3" onclick="searchmood(this.id)" id="merchOrderTypeBTn"
+                        <button class="col-4 btn btn-secondary m-3" onclick="searchmood(this)" id="merchOrderTypeBTn"
                             type="button">
-                            <i class="fa fa-search"></i><strong> Search by Order Type </strong>
+                            <i class="fa fa-search"></i><strong>Order Type</strong>
                         </button>
-                        <button class="col-5 btn btn-secondary m-3" onclick="searchmood(this.id)" id="merchOrderPriceBTn"
+                        <button class="col-4 btn btn-secondary m-3" onclick="searchmood(this)" id="merchOrderPriceBTn"
                             type="button">
-                            <i class="fa fa-search"></i><strong> Search by Order Price </strong>
+                            <i class="fa fa-search"></i><strong>Order Price</strong>
                         </button>
                     </div>
                 </div>
@@ -122,10 +126,11 @@
                 <!-- filter -->
                 <div class="btn-group col-12">
                     <button type="button" class="btn btn-info dropdown-toggle text-white fw-bold "
-                        data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                        data-bs-auto-close="outside" id="sortBtnToggle">
                         Sort By
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-list w-100 text-center itemNodeClassParent">
+                    <ul class="dropdown-menu dropdown-menu-list w-100 text-center itemNodeClassParent"
+                        id="sortBtnToggleChild">
                         <li id="priceBtnLabelId" class="dropdown-item dropdown-item-list">Price
                             <i class="fa-solid fa-money-bill-wheat"></i>
                         </li>
@@ -146,21 +151,14 @@
                         </li>
                         <li id="AtoZBtnIdToggle" class="hideClass itemNodeClassParent">
                             <ul>
-                                <li class="dropdown-item dropdown-item-list itemNodeClass" id="idAtOZ">Category Brand
+                                <li class="dropdown-item dropdown-item-list itemNodeClass" id="idAtOZ">Merchant Name
                                 </li>
-
-
-                                <li class="dropdown-item dropdown-item-list itemNodeClass" id="idAtOZCatMod">Category
-                                    Model</li>
-
-
-
-                                <li class="dropdown-item dropdown-item-list itemNodeClass" id="idAtOZItemName">Item Name
+                                <li class="dropdown-item dropdown-item-list itemNodeClass" id="idAtOZCatMod">Order Name
                                 </li>
+                                <li class="dropdown-item dropdown-item-list itemNodeClass" id="idAtOZItemName">Order
+                                    Type</li>
 
 
-                                <li class="dropdown-item dropdown-item-list itemNodeClass" id="idAtOZICountry">country
-                                </li>
 
                             </ul>
                         </li>
@@ -170,15 +168,12 @@
                         </li>
                         <li id="ZtoABtnIdToggle" class="hideClass itemNodeClassParent">
                             <ul>
-                                <li class="dropdown-item dropdown-item-list itemNodeClass" id="idZtoA">Category Brand
+                                <li class="dropdown-item dropdown-item-list itemNodeClass" id="idZtoA">Merchant Name
                                 </li>
-
-                                <li class="dropdown-item dropdown-item-list itemNodeClass" id="idZtoACatMod">Category
-                                    Model</li>
-                                <li class="dropdown-item dropdown-item-list itemNodeClass" id="idZtoAItemName">Item Name
+                                <li class="dropdown-item dropdown-item-list itemNodeClass" id="idZtoACatMod">Order Name
                                 </li>
-                                <li class="dropdown-item dropdown-item-list itemNodeClass" id="idZtoACountry">country
-                                </li>
+                                <li class="dropdown-item dropdown-item-list itemNodeClass" id="idZtoAItemName">Order
+                                    Type</li>
                             </ul>
                         </li>
                     </ul>
@@ -252,7 +247,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
-    <script src="./assets/js/dashboardAdminOders.js"></script>
+    <script src="./assets/js/dashboardAdminOders.js" type="module"></script>
 </body>
 
 </html>

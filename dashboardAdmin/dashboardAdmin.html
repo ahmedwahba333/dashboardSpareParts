@@ -10,10 +10,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <link rel="stylesheet" href="./assets/css/all.min.css">
   <link rel="stylesheet" href="assets/css/dashboardAdmin.css" />
-  <title>Document</title>
+  <link rel="icon" href="./assets/imgs/icon.jpg">
+    <title>Dashboard Admin</title>
 </head>
 
-<body>
+<body id="myBody">
   <!-- start nav dashboard -->
   <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
@@ -29,10 +30,10 @@
           <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Spare Parts</h5>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        <div class="offcanvas-body d-flex justify-content-between flex-column">
+          <ul class="navbar-nav flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Dashboard Admin</a>
+              <a class="nav-link active" aria-current="page" href="./dashboardAdmin.html">Dashboard Admin</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./dashboardAdminOders.html">Orders</a>
@@ -48,13 +49,22 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="./dashboardAdminMerchantUsers.html">Merchant Users</a></li>
-                <li><a class="dropdown-item" href="#">Maintenance Center Users</a></li>
-                <li><a class="dropdown-item" href="#">customers</a></li>
+                <li><a class="dropdown-item" href="./dashboardMaintenanceCenterUsers.html">Maintenance Center Users</a></li>
+                <li><a class="dropdown-item" href="./dashboardAdminCustomers.html">customers</a></li>
               </ul>
             </li>
 
 
           </ul>
+          <div class="darkBtnParent">
+            <div class="darkBtn">
+              <h2>Dark Mode</h2>
+              <label class="switch">
+                <input type="checkbox" id="darkBtnChecked" onclick="darkFun()">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -180,38 +190,6 @@
   </div>
 
 
-
-
-  <!-- <div class="container normal-users total-Normal-users-details-info">
-    <div class="row">
-      <div class="col-md-6">
-
-        <div class="users-info total">
-          <div class="d-flex justify-content-between">
-            <div class=""><i class="fa-solid fa-check m-2"></i>Accepted Normal Users</div>
-            <div class="panel-body"><i class="fa-solid fa-users m-2"></i>10</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-
-        <div class="users-info-pending total">
-          <div class="d-flex justify-content-between">
-            <div class="panel-heading"><i class="fa-solid fa-spinner m-2"></i>Pending Normal Users</div>
-            <div class="panel-body"><i class="fa-solid fa-users m-2"></i>5</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- End last users tree -->
-
-
-
-
-
-
   <!-- start total pending users tree -->
 
   <div class="container latest total-users-details-pending">
@@ -231,15 +209,6 @@
           <span><i class="fa-solid fa-spinner m-2"></i>5</span>
         </div>
       </div>
-
-      <!-- <div class="col-lg-4">
-        <div class="total text-center parent-info-users-pending total-users-tag total-Normal-Users-pending">Pending
-          Normal
-          Users
-          <span><i class="fa-solid fa-spinner m-2"></i>5</span>
-        </div>
-      </div> -->
-
     </div>
   </div>
 
@@ -291,7 +260,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
-  <script src="./assets/js/dashboardAdmin.js"></script>
+  <script src="./assets/js/dashboardAdmin.js" type="module"></script>
 </body>
 
 </html>

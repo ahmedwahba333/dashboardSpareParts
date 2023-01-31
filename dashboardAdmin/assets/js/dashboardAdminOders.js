@@ -1,51 +1,6 @@
-let searchMood = "title";
-function searchmood(id) {
-  let searchLabel = document.getElementById("search");
-  if (id == "merchNameBTn") {
-    searchLabel.placeholder = "Search By Merchant Name";
-  } else if (id == "merchNIDBTn") {
-    searchLabel.placeholder = "Search By Merchant National Id";
-  } else if (id == "merchOrderNameBTn") {
-    searchLabel.placeholder = "Search By Order Name";
-  } else if (id == "merchOrderTypeBTn") {
-    searchLabel.placeholder = "Search By Order Type";
-  } else if (id == "merchOrderPriceBTn") {
-    searchLabel.placeholder = "Search By Order Price";
-  }
-  searchLabel.focus();
-}
-
-// start searching object
-class mySearch {
-  constructor(merchantName, merchantNID, orderName, orderType, orderPrice) {
-    this.merchantName = merchantName;
-    this.merchantNID = merchantNID;
-    this.orderName = orderName;
-    this.orderType = orderType;
-    this.orderPrice = orderPrice;
-  }
-  searchKeyUp(myElement, value) {
-    for (let i = 0; i < myElement.length; i++) {
-      myElement[i].parentElement.classList.add("dispNone");
-      if (
-        myElement[i].innerHTML
-          .toLocaleLowerCase()
-          .includes(value.toLocaleLowerCase())
-      ) {
-        myElement[i].parentElement.classList.remove("dispNone");
-
-        myElement[i].style.color = "#30a4bc";
-        myElement[i].style.fontWeight = "bold";
-      }
-    }
-    if(value != ""){
-      document.getElementById("mainTable").classList.remove("table-striped");
-    }else{
-      document.getElementById("mainTable").classList.add("table-striped");
-    }
-  }
-}
-// end searching object
+import { mySearch, mySort, searchmood,darkFun } from "./searchSort.js";
+window.searchmood = searchmood;
+window.darkFun = darkFun;
 
 let myObj = new mySearch();
 myObj.merchantName = document.getElementsByClassName("merchantName");
@@ -73,70 +28,11 @@ document.getElementById("merchOrderPriceBTn").addEventListener("click", () => {
   myObj.searchKeyUp(myObj.orderPrice, document.getElementById("search").value);
 });
 
-// start sorting object
-class mySort {
-  constructor(priceClass, merchantNameClass) {
-    this.priceClass = priceClass;
-    this.merchantNameClass = merchantNameClass;
-  }
-  lowerToUpper(a, b) {
-    return a - b;
-  }
-  upperToLower(a, b) {
-    return b - a;
-  }
-
-  sortPriceFun(myFunSort, myElements) {
-    let priceArr = [];
-    for (let i = 0; i < myElements.length; i++) {
-      priceArr.push(myElements[i].innerText);
-    }
-    for (let i = 0; i < myElements.length; i++) {
-      for (let x = 0; x < myElements.length; x++) {
-        if (priceArr.sort(myFunSort)[i] == myElements[x].innerText) {
-          document
-            .getElementById("tableBody")
-            .appendChild(myElements[x].parentElement);
-        }
-      }
-    }
-    this.sortColorFun(myElements, "#30a4bc", "bold");
-  }
-
-  sortNameFun(sortType, myElements) {
-    let priceArr = [];
-    for (let i = 0; i < myElements.length; i++) {
-      priceArr.push(myElements[i].innerText);
-    }
-    if (sortType == "AtoZ") {
-      priceArr.sort();
-    } else if (sortType == "ZtoA") {
-      priceArr.reverse();
-    }
-    for (let i = 0; i < myElements.length; i++) {
-      for (let x = 0; x < myElements.length; x++) {
-        if (priceArr[i] == myElements[x].innerText) {
-          document
-            .getElementById("tableBody")
-            .appendChild(myElements[x].parentElement);
-        }
-      }
-    }
-    this.sortColorFun(myElements, "#30a4bc", "bold");
-  }
-
-  sortColorFun(myElements, myColor, myFontWeight) {
-    for (let i = 0; i < myElements.length; i++) {
-      myElements[i].style.color = myColor;
-      myElements[i].style.fontWeight = myFontWeight;
-    }
-  }
-}
-// end sorting object
-
 let sortObj = new mySort();
 sortObj.priceClass = document.getElementsByClassName("orderPrice");
 sortObj.merchantNameClass = document.getElementsByClassName("merchantName");
+sortObj.orderName = document.getElementsByClassName("orderName");
+sortObj.orderType = document.getElementsByClassName("orderType");
 
 document.getElementById("idLowerToUpper").addEventListener("click", () => {
   sortObj.sortPriceFun(sortObj.lowerToUpper, sortObj.priceClass);
@@ -151,58 +47,57 @@ document.getElementById("idAtOZ").addEventListener("click", () => {
 document.getElementById("idZtoA").addEventListener("click", () => {
   sortObj.sortNameFun("ZtoA", sortObj.merchantNameClass);
 });
+document.getElementById("idAtOZCatMod").addEventListener("click", () => {
+  sortObj.sortNameFun("AtoZ", sortObj.orderName);
+});
+
+document.getElementById("idZtoACatMod").addEventListener("click", () => {
+  sortObj.sortNameFun("ZtoA", sortObj.orderName);
+});
+document.getElementById("idAtOZItemName").addEventListener("click", () => {
+  sortObj.sortNameFun("AtoZ", sortObj.orderType);
+});
+
+document.getElementById("idZtoAItemName").addEventListener("click", () => {
+  sortObj.sortNameFun("ZtoA", sortObj.orderType);
+});
 
 
 
 // dark mode buttun
 // document.getElementById("darkBtn").addEventListener("click",()=>{
 //   if (document.getElementById("myBody").hasAttribute("data-bs-theme")) {
-    
+
 //     document.getElementById("myBody").removeAttribute("data-bs-theme")
 //   }else{
-//     document.getElementById("myBody").setAttribute("data-bs-theme","dark") 
+//     document.getElementById("myBody").setAttribute("data-bs-theme","dark")
 //   }
 //   console.log(document.getElementById("myBody").hasAttribute("data-bs-theme"));
 // })
 
-
-
-
-
-
 // jquery logic for label list and unorderd list
-$(document).ready(function(){
-  $("#priceBtnLabelId").click(function(){
+$(document).ready(function () {
+  $("#priceBtnLabelId").click(function () {
     $("#priceBtnLabelIdToggle").slideToggle();
   });
-  
-  
-  
-  $("#yearBtnLabelId").click(function(){
+
+  $("#yearBtnLabelId").click(function () {
     $("#yearBtnLabelIdToggle").slideToggle();
   });
-  
-  
-  $("#AtoZBtnId").click(function(){
+
+  $("#AtoZBtnId").click(function () {
     $("#AtoZBtnIdToggle").slideToggle();
   });
-  
-  $("#ZtoABtnId").click(function(){
+
+  $("#ZtoABtnId").click(function () {
     $("#ZtoABtnIdToggle").slideToggle();
   });
-  
-  
-  $("#sortBtnToggle").click(function(){
+
+  $("#sortBtnToggle").click(function () {
     $("#sortBtnToggleChild").slideToggle();
   });
-  
-  $(".itemNodeClass").click(function(){
+
+  $(".itemNodeClass").click(function () {
     $(".itemNodeClassParent").fadeOut();
   });
-  
-  
-  
-  
-  
-  });
-  
+});
