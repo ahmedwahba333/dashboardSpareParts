@@ -9,7 +9,7 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="./assets/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/dashboardAdminCategories&items.css" />
+    <link rel="stylesheet" href="assets/css/DBAdmCatItems.css" />
     <link rel="icon" href="./assets/imgs/icon.jpg">
     <title>Dashboard Admin Categories and items</title>
 </head>
@@ -25,7 +25,7 @@
                 aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="#">Spare Parts</a>
+            <a class="navbar-brand" href="./DBAdmHome.html">Spare Parts</a>
             <p class="navbar-brand">Welcome Admin</p>
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
                 aria-labelledby="offcanvasNavbarLabel">
@@ -36,14 +36,14 @@
                 <div class="offcanvas-body d-flex justify-content-between flex-column">
                     <ul class="navbar-nav flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="./dashboardAdmin.html">Dashboard
+                            <a class="nav-link active" aria-current="page" href="./DBAdmHome.html">Dashboard
                                 Admin</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./dashboardAdminOders.html">Orders</a>
+                            <a class="nav-link" href="./DBAdmOders.html">Orders</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./dashboardAdminCategories&items.html">Categories and Items</a>
+                            <a class="nav-link" href="./DBAdmCatItems.html">Categories and Items</a>
                         </li>
 
                         <li class="nav-item dropdown">
@@ -52,14 +52,13 @@
                                 Users
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="./dashboardAdminMerchantUsers.html">Merchant
+                                <li><a class="dropdown-item" href="./DBAdmMerUsers.html">Merchant
                                         Users</a></li>
-                                <li><a class="dropdown-item" href="./dashboardMaintenanceCenterUsers.html">Maintenance Center Users</a></li>
-                                <li><a class="dropdown-item" href="./dashboardAdminCustomers.html">customers</a></li>
+                                <li><a class="dropdown-item" href="./DBAdmMaintCenUsers.html">Maintenance
+                                        Center Users</a></li>
+                                <li><a class="dropdown-item" href="./DBAdmCustomers.html">customers</a></li>
                             </ul>
                         </li>
-
-
                     </ul>
                     <div class="darkBtnParent">
                         <div class="darkBtn">
@@ -75,7 +74,7 @@
         </div>
     </nav>
     <!-- End nav dashboard -->
- 
+
     <!-- start primary tree -->
 
     <div class="container home-total mb-4">
@@ -99,43 +98,54 @@
 
 
                 <!-- search -->
-                <div class="col-12 mb-4">
-                    <input type="text" class="form-control" placeholder="Search" id="search">
-                </div>
-                <div class="input-group-append col-12 row justify-content-center mb-4 flex-wrap">
-                    <div class="col-12 row justify-content-center">
-                        <button class="col-3 btn btn-secondary m-3" onclick="searchmood(this)" id="catBrandNameIDSrch"
-                            type="button">
-                            <i class="fa fa-search"></i><strong>Category Brand</strong>
+                <div class="d-flex justify-content-center mb-4">
+                    <input type="text" class="w-75" placeholder="Search" id="search">
+                    <div class="dropdown">
+                        <button class="btn btn-info text-white dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Search
                         </button>
-                        <button class="col-3 btn btn-secondary m-3" onclick="searchmood(this)" id="catModelNameIDSrch"
-                            type="button">
-                            <i class="fa fa-search"></i><strong>Category Model</strong>
-                        </button>
-                        <button class="col-3 btn btn-secondary m-3" onclick="searchmood(this)" id="catYearIDSrch"
-                            type="button">
-                            <i class="fa fa-search"></i><strong>Category Year</strong>
-                        </button>
-                    </div>
-                    <button class="col-3 btn btn-secondary m-3" onclick="searchmood(this)" id="itemNameIDSrch"
-                        type="button">
-                        <i class="fa fa-search"></i><strong>Item Name</strong>
-                    </button>
-                    <div class="col-12 row justify-content-center">
-                        <button class="col-3 btn btn-secondary m-3" onclick="searchmood(this)" id="itemDescIDSrch"
-                            type="button">
-                            <i class="fa fa-search"></i><strong>Item description</strong>
-                        </button>
-                        <button class="col-3 btn btn-secondary m-3" onclick="searchmood(this)" id="itemPriceIDSrch"
-                            type="button">
-                            <i class="fa fa-search"></i><strong>Item Price</strong>
-                        </button>
-                        <button class="col-3 btn btn-secondary m-3" onclick="searchmood(this)" id="countryIDSrch"
-                            type="button">
-                            <i class="fa fa-search"></i><strong>country</strong>
-                        </button>
+                        <ul class="dropdown-menu" class="d-flex" style="width: 200px;"
+                            aria-labelledby="dropdownMenuButton1">
+                            <li> <button class="btn m-2" onclick="searchmood(this)" id="catBrandNameIDSrch"
+                                    type="button">
+                                    <i class="fa fa-search me-2"></i><strong>Category Brand</strong>
+                                </button></li>
+                            <li><button class="btn m-2" onclick="searchmood(this)" id="catModelNameIDSrch"
+                                    type="button">
+                                    <i class="fa fa-search me-2"></i><strong>Category Model</strong>
+                                </button></li>
+                            <li><button class="btn m-2" onclick="searchmood(this)" id="catYearIDSrch" type="button">
+                                    <i class="fa fa-search me-2"></i><strong>Category Year</strong>
+                                </button></li>
+                            <li> <button class="btn m-2" onclick="searchmood(this)" id="itemNameIDSrch" type="button">
+                                    <i class="fa fa-search me-2"></i><strong>Item Name</strong>
+                                </button></li>
+                            <li><button class="btn m-2" onclick="searchmood(this)" id="itemDescIDSrch" type="button">
+                                    <i class="fa fa-search me-2"></i><strong>Item description</strong>
+                                </button></li>
+                            <li><button class="btn m-2" onclick="searchmood(this)" id="itemPriceIDSrch" type="button">
+                                    <i class="fa fa-search me-2"></i><strong>Item Price</strong>
+                                </button></li>
+                            <li><button class="btn m-2" onclick="searchmood(this)" id="countryIDSrch" type="button">
+                                    <i class="fa fa-search me-2"></i><strong>country</strong>
+                                </button></li>
+                        </ul>
                     </div>
                 </div>
+                <!-- <div class="input-group-append col-12 row justify-content-center mb-4 flex-wrap"> -->
+                <!-- <div class="col-12 row justify-content-center"> -->
+
+
+
+                <!-- </div> -->
+
+                <!-- <div class="col-12 row justify-content-center"> -->
+
+
+
+                <!-- </div> -->
+                <!-- </div> -->
 
                 <!-- filter -->
                 <div class="btn-group col-12">
@@ -298,7 +308,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
-    <script src="./assets/js/dashboardAdminCategories&items.js" type="module"></script>
+    <script src="./assets/js/DBAdmCatItems.js" type="module"></script>
 </body>
 
 </html>
